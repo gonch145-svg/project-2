@@ -1,0 +1,11 @@
+process_step,variation,error_rate
+start,Control,0.10111745925054613
+step_1,Control,0.07765943103680734
+step_2,Control,0.09143938808622422
+step_3,Control,0.005703005044966001
+confirm,Control,0.0
+start,Test,0.18617416864397776
+step_1,Test,0.08811390837804375
+step_2,Test,0.07383265029526606
+step_3,Test,0.0011199505676990809
+confirm,Test,0.0
