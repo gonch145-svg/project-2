@@ -41,12 +41,13 @@ This is a **funnel process**:
   - **Completion Rate** - % of users progressing to the next step
   - **Completion Time** - average time spent per step
   - **Error Rate** - % of users going backward in the process
+  - **Drop-off step** - users who live the process before completing it
 
 ## Statistical Analysis
 - **ANOVA** - Compare step times within groups
 - **Two-Sample T-Test** - Compare step times between groups
 - **Z-Test** - Compare error rates and completion rates
-- 
+  
 All tests were conducted at a **5% significance level (α = 0.05).**
 
 ## Hypotheses
@@ -67,14 +68,13 @@ For each step:
 
   ## Completion Time (seconds)
 
-| Step    | Control | Test   | Δ        |
-| ------- | ------- | ------ | -------- |
-| step_1  | 38.77   | 30.91  | ✅ Faster |
-| step_2  | 35.19   | 38.03  | ❌ Slower |
-| step_3  | 91.75   | 91.46  | ➖ Same   |
-| confirm | 119.87  | 106.54 | ✅ Faster |
+| Step    | Control     | Test       | Δ        |
+| ------- | -------     | ------     | -------- |
+| start   | 35.24       | **28.36**  | ✅ Faster |
+| step_1  | **34.50**   | 36.41      | ❌ Slower |
+| step_2  | 89.32       | **85.42**  | ✅ Faster |
+| step_3  | 112.11      | **98.12**  | ✅ Faster |
 
-**Total improvement:** ~ 19 seconds faster (~ 6-7%)
 
   ## Completion Rate
 
@@ -95,63 +95,91 @@ For each step:
 
 Difference is **statistically significant (p < 0.001)**
 
+## Drop-off Rate
+
+| Step    | Control | Test     | Δ        |
+| ------- | ------- | ------   | -------- |
+| start   | 0       | 0        | ➖ Same  |
+| step_1  | 25.8%   | 15.5%    | ✅ Lower |
+| step_2  | 15.7%   | 14%      | ✅ Lower |
+| step_3  | 10.3%   | 10.6%    | ❌ Higher |
+| confirm | 16.7%   | 17.5%    | ❌ Higher |
+
+
 ## Key Insights
 **Strong improvement in early conversion**
 - Step 1 completion increases by +9 percentage points
-- Indicates better engagement at the start of the journey
+- Drop-off at Step 1 significantly decreases
+  → Indicates **better engagement and smoother onboarding**
 
 **Faster overall experience**
-- Users complete the process ~19 seconds faster
-- Improvments especially in **Step 1 and Confirmation**
+- Users complete the process **~23 seconds faster**
+- Improvments especially in **Start and Step 3**
+  → Efficiency gains occur in high-impact stages
 
 **Increased error rate**
 - Test group shows **higher error rate (+6.5 pp)**
-- Major spike occurs at the **start step**
+- The largest increase occurs at the **start step**
+  → Suggests **initial confusion or lack of clarity**
 
-**Stable mid-funnel performance**
-- Step 2 and Step 3 show minimal differences
-- Core process complexity unchanged
+**Mixed performance in later stages**
+
+- **Step 2:** Slight improvement (lower drop-off + faster time)
+- **Step 3 & Confirm:** Slightly higher drop-off despite faster completion
+  → Indicates **remaining friction near the end of the process**
 
 ## Trade-Off Analysis
 
 | Metric          | Test vs Control |
 | --------------- | --------------- |
-| Completion Rate | ✅ Improved      |
-| Completion Time | ✅ Faster        |
-| Error Rate      | ❌ Worse         |
+| Completion Rate | ✅ Improved                               |
+| Completion Time | ✅ Faster                                 |
+| Drop-off Rate   | ⚖️ Mixed (better early, worse late)       |
+| Error Rate      | ❌ Worse                                  |
 
-The new UI improves **efficiency and progression**, but reduces **usability**
+The new UI improves **efficiency and progression**, but introduces **usability challenges**
 
 ## Interpretation
 
 The redesigned interface:
-- Encourages more users to move forward (higher completion rate)
-- Reduces total time spent (higher efficiency)
-- But introduces **more user errors**, especially early in the journey
+- Encourages more users to move forward **(higher completion rate & lower early drop-off)**
+- Improves efficiency in key steps **(faster completion times)**
+- But introduces **more user errors**, particularly at the beginning
+- And shows **slight friction at the end of the process**
 
 This suggests:
-- The interface is more engaging but less intuitive at the beginning
+- The interface is **more engaging and effective at guiding users initially**
+- But **less intuitive at first interaction**
+- And may still require refinement in **final steps**
 
 ## Conclusion
 
 The new UI delivers:
-- Higher completion rates (especially early funnel)
-- Faster completion times
-- Higher error rates
+- Higher completion rates
+- Lower drop-off in early stages
+- Faster completion in key steps
+- Higher error rates, especially at the beginning of the process
+- Slightly higher drop-off near completion
+
+Overall, the redesign has a **positive impact on conversion and efficiency, but introduces usability issues that affect user accuracy and final-stage completion.**
 
 ## Recomendation
-**Adopt the new interface with improvements**
+**Adopt the new interface with targeted improvements**
 
 Focus on:
 - Improving **onboarding clarity (Start & Step 1)**
-- Reducing early-stage confusion and errors
+- Reducing **early-stage confusion and errors**
+- Optimizing **final steps (Step 3 & Confirmation)** to reduce drop-off
 
 This would preserve:
-- High conversion
-- Faster completion
+- Higher conversion rates
+- Strong early engagement
+- Faster completion times
 
 While improving:
-- Usability and user experience
+- Accuracy
+- End-of-process completion
+- Overall user experience
 
 ## Tools & Technologies
 - Pyhton (pandas, spicy, ...)
@@ -162,3 +190,6 @@ While improving:
 - Trade-offs between **speed, accuracy and conversion**
 - Impact of **data cleaning and aggregation choices**
 - Applying statistical methods to **real-world product decisions**
+
+## Slides
+https://www.canva.com/design/DAHE4KiV2as/TLyEIDOjiR6D1dvwKMh-ow/edit
