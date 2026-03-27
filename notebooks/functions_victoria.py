@@ -91,15 +91,19 @@ def cr_steps(df, steps, user_col="visit_id", step_col="process_step"):
 def missing_start(df: pd.DataFrame):
     # Sort the dataframe so events within each visit are in chronological order
     # This ensures we correctly identify the first step taken in each visit
-    df_sorted = df.sort_values(["visit_id", "date_time"])
 
     # Group by visit_id and select the first recorded process_step for each visit
     # This gives the starting step of each visit
-    first_step = df_sorted.groupby("visit_id")["process_step"].first()
 
     # Identify visits where the first step is not "start"
-    # These represent visits that entered the funnel mid-process
-    bad_visits = first_step[first_step != "start"].index
-
+    # Bad visits represent visits that entered the funnel mid-process
+   
     # Return the visit_ids of visits that did not begin with "start"
-    return bad_visits
+
+
+    def missing_start (df: pd.DataFrame) --> pd.DataFrame:
+    start_users = set(df[df["process_step"] == "start"]["visit_id"])
+    all_users = set(df["visit_id"])
+    missing_start = all_users - start_users
+    df = df[~df["visit_id"].isin(missing_start)]
+    return df
