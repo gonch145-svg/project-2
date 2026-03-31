@@ -1,0 +1,9 @@
+variation,process_step,step_duration
+Control,start,35.24204577832653
+Control,step_1,34.502738764603436
+Control,step_2,89.31704898120358
+Control,step_3,112.11181579580824
+Test,start,28.358186076218864
+Test,step_1,36.41273209252985
+Test,step_2,85.42247727341933
+Test,step_3,98.1243481958215
